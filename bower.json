@@ -1,0 +1,17 @@
+{
+  "name": "untitled1",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Natalie Romano"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/robeau/firebassPuzzle",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
