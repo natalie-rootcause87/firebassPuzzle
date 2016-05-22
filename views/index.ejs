@@ -2,11 +2,28 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://www.gstatic.com/firebasejs/3.0.0/firebase.js"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  <script src="/javascripts/script.js"></script>
+  <script>
+  // Initialize Firebase
+      var config = {
+        apiKey: 'AIzaSyA5Ueot_rblw21jDXrW4KkYYqBu_V0orYw',
+        projectId: 'firebass-450f9',
+        databaseURL: 'firebass-450f9.firebaseio.com',
+        storageBucket: 'firebass-450f9.appspot.com'
+      };
+      firebase.initializeApp(config);
+
+
+  var db = firebase.database();
+  var ref = db.ref('part1/dialogue/d1');
+
+  ref.once('value', function(snapshot) {
+    console.log(snapshot.val());
+  }, function(errorObject) {
+    return false;
+  });
+  </script>
   </body>
 </html>

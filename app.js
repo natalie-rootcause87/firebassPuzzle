@@ -10,6 +10,12 @@ var users = require('./routes/users');
 
 var FirebaseTokenGenerator = require('firebase-token-generator');
 var Firebase = require('firebase');
+var config = {
+  apiKey: "AIzaSyA5Ueot_rblw21jDXrW4KkYYqBu_V0orYw",
+  authDomain: "firebass-450f9.firebaseapp.com",
+  storageBucket: "firebass-450f9.appspot.com",
+  databaseURL: "https://firebass-450f9.firebaseio.com"
+};
 
 var app = express();
 
@@ -59,20 +65,5 @@ app.use(function(err, req, res, next) {
   });
 });
 
-
-var tokenGenerator = new FirebaseTokenGenerator("AIzaSyA5Ueot_rblw21jDXrW4KkYYqBu_V0orYw");
-var token = tokenGenerator.createToken({ uid: "uniqueId1", some: "arbitrary", data: "here" },
-    { admin: true });
-
-var ref = new Firebase("https://firebass-450f9.firebaseio.com/");
-ref.authWithCustomToken(token, function(error, authData) {
-  if (error) {
-    console.log("Login Failed!", error);
-  } else {
-    console.log("Login Succeeded!", authData);
-  }
-});
-
-console.log('token', token);
 
 module.exports = app;
