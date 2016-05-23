@@ -17,13 +17,47 @@
 
 
   var db = firebase.database();
-  var ref = db.ref('part1/dialogue/d1');
+  var ref1 = db.ref('part2/timepiece/one');
+  var ref2 = db.ref('part2/timepiece/two');
+  var ref3 = db.ref('part2/timepiece/three');
+  var cache = [0, 0, 0];
+//ref.set(["!launch"]);
 
-  ref.once('value', function(snapshot) {
-    console.log(snapshot.val());
-  }, function(errorObject) {
-    return false;
-  });
+  var inter = window.setInterval(function() {
+    ref1.once('value', function(snapshot) {
+      if(!cache[0]) {
+        cache[0] = snapshot.val();
+        console.log(cache);
+      }
+    }, function(errorObject) {
+      return false;
+    });
+
+    ref2.once('value', function(snapshot) {
+      if(!cache[1]) {
+        cache[1] = snapshot.val();
+        console.log(cache);
+      }
+    }, function(errorObject) {
+      return false;
+    });
+
+    ref3.once('value', function(snapshot) {
+      if(!cache[2]) {
+        cache[2] = snapshot.val();
+        console.log(cache);
+      }
+    }, function(errorObject) {
+      return false;
+    });
+  }, 1000)
+
+  // ref.once("value", function(t) {
+  //       return t
+  //   }, function(t) {
+  //       return console.log(t),
+  //       !1
+  //   })
   </script>
   </body>
 </html>
