@@ -23,6 +23,7 @@
     cache = [0, 0, 0];
 //ref.set(["!launch"]);
 
+  //queries the timepieces every second and does a console log if a new timepiece has opened
   var inter = window.setInterval(function() {
     ref1 = db.ref('part2/timepiece/one');
     ref1.once('value', function(snapshot) {
