@@ -16,14 +16,15 @@
       firebase.initializeApp(config);
 
 
-  var db = firebase.database();
-  var ref1 = db.ref('part2/timepiece/one');
-  var ref2 = db.ref('part2/timepiece/two');
-  var ref3 = db.ref('part2/timepiece/three');
-  var cache = [0, 0, 0];
+  var db = firebase.database(),
+    ref1,
+    ref2,
+    ref3,
+    cache = [0, 0, 0];
 //ref.set(["!launch"]);
 
   var inter = window.setInterval(function() {
+    ref1 = db.ref('part2/timepiece/one');
     ref1.once('value', function(snapshot) {
       if(!cache[0]) {
         cache[0] = snapshot.val();
@@ -33,6 +34,7 @@
       return false;
     });
 
+    ref2 = db.ref('part2/timepiece/two');
     ref2.once('value', function(snapshot) {
       if(!cache[1]) {
         cache[1] = snapshot.val();
@@ -42,6 +44,7 @@
       return false;
     });
 
+    ref3 = db.ref('part2/timepiece/three');
     ref3.once('value', function(snapshot) {
       if(!cache[2]) {
         cache[2] = snapshot.val();
